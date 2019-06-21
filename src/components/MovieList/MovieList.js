@@ -3,8 +3,11 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 class MovieList extends Component {
-    render(){
-        return(
+    componentDidMount() {
+        this.props.dispatch({ type: "GET_MOVIES" });
+    }
+    render() {
+        return (
             <>
             </>
         )
