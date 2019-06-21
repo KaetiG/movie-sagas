@@ -102,3 +102,21 @@ VALUES
 (14,2),
 (14,4),
 (14,8);
+
+SELECT "name" FROM "genres"
+LEFT JOIN "movies_genres" ON "genres"."id"="movies_genres"."genre_id"
+LEFT JOIN "movies" ON "movies"."id"="movies_genres"."movie_id"
+WHERE "movies_genres"."movie_id" = '2'
+ORDER BY "genres"."id";
+
+-- above code grabs genres of specific movie 
+--(movie num2 which is Beauty and the Beast)
+
+SELECT "title" FROM "movies"
+LEFT JOIN "movies_genres" ON "movies"."id"="movies_genres"."movie_id"
+LEFT JOIN "genres" ON "genres"."id"="movies_genres"."genre_id"
+WHERE "movies_genres"."genre_id" = '8'
+ORDER BY "movies"."id";
+
+--above code grabs every movie that has the genre 'Fantasy'
+--as indicated by genre id # 8 
