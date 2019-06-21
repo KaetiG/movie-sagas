@@ -4,8 +4,7 @@ const router = express.Router();
 
 //GET MOVIES REQUEST
 router.get('/', (req, res) => {
-    const databaseQuery = 'SELECT * FROM movies';
-    pool.query(databaseQuery)
+    pool.query('SELECT * FROM movies')
       .then((result) => { res.send(result.rows); })
       .catch((err) => {
         console.log('Error completing SELECT movie query', err);
@@ -13,7 +12,14 @@ router.get('/', (req, res) => {
       });
   });
 //GET GENRES REQUEST
-
+router.get('/genres', (req, res) => {
+    pool.query('SELECT * FROM genres')
+      .then((result) => { res.send(result.rows); })
+      .catch((err) => {
+        console.log('Error completing SELECT genre query', err);
+        res.sendStatus(500);
+      });
+  });
 //PUT REQUEST
 
 
