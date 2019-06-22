@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import SingleMovie from '../SingleMovie/SingleMovie';
 
 class MovieList extends Component {
     componentDidMount() {
@@ -8,8 +9,9 @@ class MovieList extends Component {
     }
     render() {
         return (
-            <>
-            </>
+            <div>
+            {this.props.reduxState.movies.map(movie => <SingleMovie movie={movie} key={movie.id} />)}
+            </div>
         )
     }
 }
