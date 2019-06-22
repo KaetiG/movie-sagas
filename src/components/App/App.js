@@ -10,11 +10,8 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <div className="App">
-        <p>Empty Page</p>
-        
+      <div className="App">       
         <Route path="/details" component={Details} />
-
         <Route path="/" exact component={MovieList} />
       </div>
       </Router>

@@ -30,8 +30,9 @@ function* getMovies(action) {
 
 function* getDeetz(action) {
     try {
-        const getResponse = yield axios.get('/details/:id');
+        const getDeetResponse = yield axios.get('/details/${action.payload}');
         yield put({ type: 'SET_DETAILS', payload: getResponse.data })
+        console.log(getDeetResponse.data)
     } catch (error){
         console.log('error getting the DEETZ', error);
     }
@@ -54,7 +55,7 @@ const movies = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIES':
             return action.payload; //may need to spread -> return [ ...state, ...action.payload ];
-        case 'SET_DETAILS':
+        case 'GET_DETAILS':
             return action.payload;
         default:
             return state;
