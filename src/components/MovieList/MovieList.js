@@ -11,7 +11,7 @@ class MovieList extends Component {
     render() {
         return (
             <div>
-            {this.props.reduxState.movies.map(movie => <SingleMovie movie={movie} key={movie.id} />)}
+            {this.props.reduxState.movies.map(movie => <SingleMovie movie={movie} history={this.props.history} key={movie.id} />)}
             </div>
         )
     }

@@ -16,6 +16,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('GET_MOVIES', getMovies);
     yield takeEvery('GET_GENRES', getGenres);
+    yield takeEvery('GET_DETAILS', getDeetz);
 }
 
 function* getMovies(action) {
@@ -27,9 +28,18 @@ function* getMovies(action) {
     }
 }
 
+function* getDeetz(action) {
+    try {
+        const getResponse = yield axios.get('/details/:id');
+        yield put({ type: 'SET_DETAILS', payload: getResponse.data })
+    } catch (error){
+        console.log('error getting the DEETZ', error);
+    }
+}
+
 function* getGenres(action) {
     try {
-        const getResponse = yield axios.get('/movies');
+        const getResponse = yield axios.get('/movies/genres');
         yield put({ type: 'SET_GENRES', payload: getResponse.data })
     } catch (error) {
         console.log('error renting movies', error)
@@ -44,6 +54,8 @@ const movies = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIES':
             return action.payload; //may need to spread -> return [ ...state, ...action.payload ];
+        case 'SET_DETAILS':
+            return action.payload;
         default:
             return state;
     }

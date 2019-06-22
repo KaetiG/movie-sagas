@@ -4,9 +4,14 @@ import { connect } from 'react-redux';
 class Details extends Component {
     render() {
         return(
-            <></>
+            <><div>
+                </div></>
         )
     }
 }
 
-export default connect(mapReduxStateToProps)(MovieList);
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState
+});
+
+export default connect(mapReduxStateToProps)(Details);
