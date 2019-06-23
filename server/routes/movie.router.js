@@ -36,30 +36,31 @@ router.get('/details/:id', (req, res) => {
 //PUT REQUEST
 router.put('/edit/:id', (req, res)=>{
   pool.query(`UPDATE "movies"
-  SET "description" = 'Ferngully but on another planet and with special guests: the Smirfs'
-  WHERE "movies"."id" = $1;`, [req.params.id])
-  .then((result) => { res.send(result.rows); })
+  SET "description" = '1$'
+  WHERE "movies"."id" = '$2';`, [req.params.description, req.params.id])
+  .then((result) => { res.sendStatus(200); })
   .catch((err)=> {
     console.log('error updating movie', err);
     res.sendStatus(500);
   })
 })
 
-// router.put('/', (req, res) => {
+// router.put('/edit', (req, res) => {
 //   const updatedMovie = req.body;
 
 //   const queryText = `UPDATE "movies"
-//   SET "description" = 'Ferngully but on another planet and with special guests: the Blue man group'
-//   WHERE "movies"."id" = $1;`;
+//   SET "description" = '1$'
+//   WHERE "movies"."id" = $2;`;
 
 //   const queryValues = [
-//     updatedMovie.description
+//     updatedMovie.description,
+//     updatedMovie.id
 //   ];
 
 //   pool.query(queryText, queryValues)
 //     .then(() => { res.sendStatus(200); })
 //     .catch((err) => {
-//       console.log('Error completing PUT query', err);
+//       console.log('Error completing SELECT Movie query', err);
 //       res.sendStatus(500);
 //     });
 // });

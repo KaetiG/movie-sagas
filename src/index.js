@@ -16,6 +16,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('GET_MOVIES', getMovies);
     yield takeEvery('GET_DETAILS', getDeetz);
+    yield takeEvery('UPDATE_MOVIE', putMovie);
 }
 
 function* getMovies(action) {
@@ -37,6 +38,13 @@ function* getDeetz(action) {
     }
 }
 
+function* putMovie(action) {
+    try {
+        yield axios.put(`/api/edit/${action.payload.id}`);
+    }catch (error) {
+        console.log('error updating', error);
+    }
+}
 // function* getGenres(action) {
 //     try {
 //         const getResponse = yield axios.get('/api/genres');
