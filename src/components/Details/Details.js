@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import GenreDisplay from '../GenreDisplay/GenreDisplay';
 
 class Details extends Component {
     render() {
@@ -12,12 +13,12 @@ class Details extends Component {
                 <h3>{this.props.reduxState.movies.title}</h3>
                 <p>{this.props.reduxState.movies.description}</p>
                 <p>{this.props.reduxState.genres.name}</p>
-                {/* <ul>{this.props.reduxState.genres.map(genre => <li genre={genre} key={genre.id} ></li>)}</ul> */}
+                <ul>{this.props.reduxState.genres.map(genre => <GenreDisplay genre={genre} history={this.props.history} key={genre.id} />)}</ul>
             </div></>
         )
     }
 }
-
+//NEW COMPONENT MAYBE MAP THOSE NEW PROPS
 const mapReduxStateToProps = (reduxState) => ({
     reduxState
 });
