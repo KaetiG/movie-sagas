@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import MovieList from '../MovieList/MovieList.js';
 import Details from '../Details/Details';
+import Edit from '../Edit/Edit';
 
 import { HashRouter as Router, Route } from 'react-router-dom';
 
@@ -12,6 +13,7 @@ class App extends Component {
       <Router>
       <div className="App">       
         <Route path="/details" component={Details} />
+        <Route path="/edit" component={Edit} />
         <Route path="/" exact component={MovieList} />
       </div>
       </Router>

@@ -3,9 +3,18 @@ import { connect } from 'react-redux';
 import GenreDisplay from '../GenreDisplay/GenreDisplay';
 
 class Details extends Component {
-goBack = () => {
-    this.props.history.push('/');
-} 
+    // componentDidMount() {
+    //     handleEditClick();
+    // }
+
+    handleEditClick = () => {
+        this.props.history.push('/edit');
+        // this.props.dispatch({ type: "UPDATE_MOVIE" });
+    }
+
+    goBack = () => {
+        this.props.history.push('/');
+    }
     render() {
         return (
             <><div>
@@ -15,6 +24,7 @@ goBack = () => {
                     value={this.props.reduxState.movies.id} /><br />
                 <h3>{this.props.reduxState.movies.title}</h3>
                 <button onClick={this.goBack}>Back</button>
+                <button onClick={this.handleEditClick}>Edit</button>
                 <p>{this.props.reduxState.movies.description}</p>
                 <p>{this.props.reduxState.genres.name}</p>
                 <ul>{this.props.reduxState.genres.map(genre => <GenreDisplay genre={genre} history={this.props.history} key={genre.genre_id} />)}</ul>
