@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+//------COMPONENTS----------//
 import MovieList from '../MovieList/MovieList.js';
 import Details from '../Details/Details';
 import Edit from '../Edit/Edit';
@@ -11,8 +12,9 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <div className="App">       
-        <Route path="/details" component={Details} />
+      <div className="App">      
+      {/* routing set up for other pages  */}
+        <Route path="/details" component={Details} /> 
         <Route path="/edit" component={Edit} />
         <Route path="/" exact component={MovieList} />
       </div>

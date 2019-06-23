@@ -27,7 +27,7 @@ function* getMovies(action) {
         console.log('error renting movies', error)
     }
 }
-
+//below uses id of the movie clicked to pull specific genre data from database
 function* getDeetz(action) {
     try {
         const getDeetResponse = yield axios.get(`/api/details/${action.payload.id}`);
@@ -37,7 +37,7 @@ function* getDeetz(action) {
         console.log('error getting the DEETZ', error);
     }
 }
-
+//cannot get PUT to work correctly. I am still fuzzy on the relationship between redux and sagas
 function* putMovie(action) {
     try {
         yield axios.put(`/api/edit/${action.payload.id}`);

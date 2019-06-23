@@ -11,6 +11,7 @@ class MovieList extends Component {
     render() {
         return (
             <div>
+                {/* maps through array of objects and renders new component for each object to display on DOM */}
             {this.props.reduxState.movies.map(movie => <SingleMovie movie={movie} history={this.props.history} key={movie.id} />)}
             </div>
         )

@@ -7,7 +7,9 @@ class Edit extends Component {
         description: '',
         title: ''
         }
-    }
+    }//sets local state for two properties of newEdit as empty strings
+
+    //ONLY THE TITLE ONCHANGE IS WORKING AND I CANT FIGURE OUT WHY
     handleDescriptionChange = (description) => (event) => {
         console.log('event happened')
         this.setState({

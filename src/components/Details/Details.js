@@ -3,17 +3,12 @@ import { connect } from 'react-redux';
 import GenreDisplay from '../GenreDisplay/GenreDisplay';
 
 class Details extends Component {
-    // componentDidMount() {
-    //     handleEditClick();
-    // }
-
     handleEditClick = () => {
-        this.props.history.push('/edit');
-        // this.props.dispatch({ type: "UPDATE_MOVIE" });
+        this.props.history.push('/edit');//brings you to edit page
     }
 
     goBack = () => {
-        this.props.history.push('/');
+        this.props.history.push('/');//brings you back to home page
     }
     render() {
         return (
@@ -27,6 +22,7 @@ class Details extends Component {
                 <button onClick={this.handleEditClick}>Edit</button>
                 <p>{this.props.reduxState.movies.description}</p>
                 <p>{this.props.reduxState.genres.name}</p>
+                {/* below takes every object in array of objects and renders a new Component to display the items on DOM */}
                 <ul>{this.props.reduxState.genres.map(genre => <GenreDisplay genre={genre} history={this.props.history} key={genre.genre_id} />)}</ul>
             </div></>
         )

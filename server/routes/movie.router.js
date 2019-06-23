@@ -3,6 +3,9 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 //GET MOVIES REQUEST
+
+//gets all data in movies table from database
+
 router.get('/', (req, res) => {
     pool.query('SELECT * FROM movies')
       .then((result) => { res.send(result.rows); })
@@ -21,6 +24,8 @@ router.get('/genres', (req, res) => {
       });
   });
 //GET DETAILS REQUEST
+//gets the names and genre_ids from joint table
+//i dont think I actually need the LEFTs, and I am unsure still when I would use them
 router.get('/details/:id', (req, res) => {
   pool.query(`SELECT "name", "genre_id" FROM "movies_genres"
   LEFT JOIN "genres" ON "movies_genres"."genre_id"="genres"."id"
@@ -34,6 +39,11 @@ router.get('/details/:id', (req, res) => {
     })
 })
 //PUT REQUEST
+
+//I tried two different kinds of put requests and both are not working anymore, 
+//at first I'd hard coded a new description and did not have req.params.description
+//and THAT was working in postman
+
 router.put('/edit/:id', (req, res)=>{
   pool.query(`UPDATE "movies"
   SET "description" = '1$'
