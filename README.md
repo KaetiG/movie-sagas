@@ -1,5 +1,9 @@
 # React-Redux with Sagas
 
+
+MY UPDATE: In this project we were supposed to utilize a few different GET requests, including ones where we had to utilize many to many joint table in SQL, as well as be able to submit a PUT request to UPDATE the database on specific movies. Using multiple pages, sagas, and redux, the user should be able to click a movie, see its current info, click either a back or an edit button and be able to (if clicked) edit the movie info
+
+
 > **PLEASE COMMENT YOUR CODE.** Do not clone this repository. Instead, download the zip, extract the contents, `git init`, `git add .`, `git commit -m "initial commit - base project"` and add your remote. Please do this before you leave for the day.
 
 For this weekend challenge you'll be building a movie application!  
