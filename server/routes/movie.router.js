@@ -22,8 +22,8 @@ router.get('/genres', (req, res) => {
   });
 //GET DETAILS REQUEST
 router.get('/details/:id', (req, res) => {
-  pool.query(`SELECT "name" FROM "genres"
-  LEFT JOIN "movies_genres" ON "genres"."id"="movies_genres"."genre_id"
+  pool.query(`SELECT "name" FROM "movies_genres"
+  LEFT JOIN "genres" ON "movies_genres"."genre_id"="genres"."id"
   LEFT JOIN "movies" ON "movies"."id"="movies_genres"."movie_id"
   WHERE "movies_genres"."movie_id" = $1
   ORDER BY "genres"."id";`, [req.params.id])
