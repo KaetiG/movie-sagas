@@ -7,10 +7,10 @@ class Edit extends Component {
         description: '',
         title: ''
         
-    }//sets local state for two properties of newEdit as empty strings
+    }//sets local state for two properties as empty strings
 
     //ONLY THE TITLE ONCHANGE IS WORKING AND I CANT FIGURE OUT WHY
-    handleDescriptionChange = (description) => (event) => {
+    handleDescriptionChange = (event) => {
         console.log('event happened')
         this.setState({
             ...this.state,
@@ -19,13 +19,22 @@ class Edit extends Component {
         );
     }
 
-    handleTitleChange = (title) => (event) => {
+    handleTitleChange = (event) => {
         console.log('event happened')
         this.setState({
-            ...this.state.newEdit,
+            ...this.state,
             title: event.target.value,
         }
         );
+    }
+
+    editMovie = () => {
+        this.props.dispatch({ type: 'UPDATE_MOVIE', payload: this.state })
+        this.props.history.push('/details');
+    }
+
+    handleCancel = () => {
+        this.props.history.push('/');
     }
     render() {
         return (
@@ -42,9 +51,10 @@ class Edit extends Component {
                 <br />
                 <input placeholder='New Title Here'
             type='text' value={this.state.title} 
-            onChange={this.handleTitleChange('description')}>
+            onChange={this.handleTitleChange}>
             </input>
                 <button onClick={this.editMovie}>Submit</button>
+                <button onClick={this.handleCancel}>Cancel</button>
             </>
         )
     }
