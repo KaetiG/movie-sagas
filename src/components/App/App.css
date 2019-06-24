@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(184, 184, 184);
+}
+
 .App {
   text-align: center;
 }
@@ -16,6 +20,45 @@
 
 .App-intro {
   font-size: large;
+}
+
+li {
+  text-align: left;
+}
+
+textarea {
+  outline: none;
+  background-color: rgb(211, 211, 211);
+  border-radius: 5px;
+  border-color: #003973;
+}
+
+input {
+  outline: none;
+  width: 140px;
+  height: 40px;
+  background-color: rgb(211, 211, 211);
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14pt;
+}
+
+button {
+  background-color: #3a3a3a;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+  margin: auto;
+  padding: 8px;
+  font-size: 16pt;
+}
+button:active {
+    opacity: .75;
+    transform: translateY(2px);
+    outline: none;
+    margin: auto;
 }
 
 @keyframes App-logo-spin {
