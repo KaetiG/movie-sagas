@@ -3,20 +3,18 @@ import { connect } from 'react-redux';
 
 class Edit extends Component {
     state = {
-        newEdit: {
+      
         description: '',
         title: ''
-        }
+        
     }//sets local state for two properties of newEdit as empty strings
 
     //ONLY THE TITLE ONCHANGE IS WORKING AND I CANT FIGURE OUT WHY
     handleDescriptionChange = (description) => (event) => {
         console.log('event happened')
         this.setState({
-            newEdit: {
-            description: event.target.value,
-            ...this.state.newEdit
-            }
+            ...this.state,
+            description: event.target.value,          
         }
         );
     }
@@ -24,10 +22,8 @@ class Edit extends Component {
     handleTitleChange = (title) => (event) => {
         console.log('event happened')
         this.setState({
-            newEdit: {
             ...this.state.newEdit,
             title: event.target.value,
-            }
         }
         );
     }
@@ -39,13 +35,13 @@ class Edit extends Component {
                     rows="8"
                     cols="55"
                     onChange={this.handleDescriptionChange}
-                    value={this.state.newEdit.description}
+                    value={this.state.description}
                     placeholder='New Description Here'
                     key={'description'}>
                 </textarea>
                 <br />
                 <input placeholder='New Title Here'
-            type='text' value={this.state.newEdit.title} 
+            type='text' value={this.state.title} 
             onChange={this.handleTitleChange('description')}>
             </input>
                 <button onClick={this.editMovie}>Submit</button>

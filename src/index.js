@@ -38,21 +38,22 @@ function* getDeetz(action) {
     }
 }
 //cannot get PUT to work correctly. I am still fuzzy on the relationship between redux and sagas
-function* putMovie(action) {
-    try {
-        yield axios.put(`/api/edit/${action.payload.id}`);
-    }catch (error) {
-        console.log('error updating', error);
-    }
-}
-// function* getGenres(action) {
+// function* putMovie(action) {
 //     try {
-//         const getResponse = yield axios.get('/api/genres');
-//         yield put({ type: 'SET_GENRES', payload: getResponse.data })
-//     } catch (error) {
-//         console.log('error renting genres', error)
+//         yield axios.put(`/api/edit/${action.payload.id}`);
+//     }catch (error) {
+//         console.log('error updating', error);
 //     }
 // }
+//new one below
+function* putMovie(action) {
+    try {
+        yield axios.put(`/api/edit_movie/`, (action.payload));
+        yield put({ type: 'GET_MOVIES' })
+    } catch (error) {
+        console.log('error updating movie', error)
+    }
+}
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
